@@ -6,7 +6,7 @@ from awsglue.context import GlueContext
 from awsglue.job import Job
 
 from awsglue.dynamicframe import DynamicFrame
-
+#for spark 
 
 ## @params: [JOB_NAME]
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
@@ -21,6 +21,7 @@ job.init(args['JOB_NAME'], args)
 ## @return: datasource0
 ## @inputs: []
 predicate_pushdown = "region in ('ca','gb','us')"
+#filtering only specific regions
 
 datasource0 = glueContext.create_dynamic_frame.from_catalog(database = "db_youtube_raw", table_name = "raw_statistics", transformation_ctx = "datasource0", push_down_predicate = predicate_pushdown)
 
